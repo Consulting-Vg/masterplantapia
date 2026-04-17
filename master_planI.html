@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MASTER PLAN CEAMSE 2026 - GESTIÓN TAPIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-profundo: #1C3E5C;
+            --celeste-ceamse: #74ACD2;
+        }
+        
+        body { 
+            font-family: 'Open Sans', 'Roboto', sans-serif; 
+            background-color: var(--azul-profundo); 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .ceamse-header-font {
+            font-family: 'Arial Black', 'Helvetica Black', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+
+        .card-white {
+            background-color: #ffffff;
+            color: #1e293b;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .card-white:hover {
+            transform: translateY(-5px);
+        }
+
+        .sidebar-link {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-link.active {
+            background-color: rgba(116, 172, 210, 0.15);
+            border-left-color: var(--celeste-ceamse);
+            color: var(--celeste-ceamse);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: var(--azul-profundo);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--celeste-ceamse);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+
+    <!-- Margen Superior Izquierdo: Logo local -->
+    <div class="fixed top-0 left-0 p-6 z-50">
+        <a href="index.html">
+            <img src="logoC.png" alt="CEAMSE" class="h-16 w-auto drop-shadow-lg transition hover:scale-105">
+        </a>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 pt-32 px-4 space-y-2 hidden lg:block shrink-0 border-r border-white/5">
+        <p class="px-6 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Menú de Gestión</p>
+        <button onclick="showTab('overview')" id="btn-overview" class="sidebar-link active w-full flex items-center gap-4 px-6 py-4 rounded-r-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <span class="text-sm font-semibold">Resumen Master Plan</span>
+        </button>
+        <button onclick="showTab('logistics')" id="btn-logistics" class="sidebar-link w-full flex items-center gap-4 px-6 py-4 rounded-r-xl text-slate-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" /></svg>
+            <span class="text-sm font-semibold">Logística AMBA Sur</span>
+        </button>
+        <button onclick="showTab('fcam')" id="btn-fcam" class="sidebar-link w-full flex items-center gap-4 px-6 py-4 rounded-r-xl text-slate-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+            <span class="text-sm font-semibold">Fondo Ambiental</span>
+        </button>
+        <button onclick="showTab('uip')" id="btn-uip" class="sidebar-link w-full flex items-center gap-4 px-6 py-4 rounded-r-xl text-slate-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            <span class="text-sm font-semibold">Inspección (UIP)</span>
+        </button>
+        
+        <div class="pt-10">
+            <a href="index.html" class="flex items-center gap-2 px-6 py-2 text-white/30 hover:text-white/60 text-xs font-bold uppercase transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" /></svg>
+                Volver a Portada
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main View -->
+    <main class="flex-1 p-8 lg:p-12 lg:ml-0 overflow-y-auto custom-scrollbar">
+        
+        <!-- Top Banner Title -->
+        <div class="mb-12 pt-16 lg:pt-0">
+            <h1 class="ceamse-header-font text-4xl lg:text-5xl text-white leading-none">
+                MASTER PLAN CEAMSE 2026<br>
+                <span class="text-[#74ACD2]">- GESTIÓN TAPIA</span>
+            </h1>
+            <div class="h-1 w-32 bg-[#74ACD2] mt-6"></div>
+        </div>
+
+        <!-- TAB: OVERVIEW -->
+        <section id="overview" class="tab-content active space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <!-- Metrics -->
+                <div class="card-white p-6">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Ahorro Anual Consolidado</p>
+                    <h3 class="text-3xl font-black text-[#1C3E5C]">USD 5.7M</h3>
+                    <p class="text-xs text-[#74ACD2] font-bold mt-2">Eficiencia Sistémica "In Eternum"</p>
+                </div>
+                <div class="card-white p-6">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Viajes Optimizados</p>
+                    <h3 class="text-3xl font-black text-[#1C3E5C]">16.724</h3>
+                    <p class="text-xs text-slate-500 font-bold mt-2">Reducción de flujo mensual</p>
+                </div>
+                <div class="card-white p-6 border-l-4 border-[#74ACD2]">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Valorización de Activos</p>
+                    <h3 class="text-3xl font-black text-[#1C3E5C]">+12%</h3>
+                    <p class="text-xs text-slate-500 font-bold mt-2">Plusvalía Urbana (Colegiales)</p>
+                </div>
+                <div class="card-white p-6 border-l-4 border-red-500">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Factor de Impacto Vial</p>
+                    <h3 class="text-3xl font-black text-red-600">4.95 ESAL</h3>
+                    <p class="text-xs text-slate-500 font-bold mt-2">Daño por camión de 27 Ton.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card-white p-8">
+                    <h4 class="ceamse-header-font text-lg text-[#1C3E5C] mb-6">Amortización Social Mensual</h4>
+                    <div class="h-64"><canvas id="barChartOverview"></canvas></div>
+                </div>
+                <div class="card-white p-8">
+                    <h4 class="ceamse-header-font text-lg text-[#1C3E5C] mb-6">Distribución de Beneficios</h4>
+                    <div class="h-64"><canvas id="pieChartOverview"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Vision In Eternum Card -->
+            <div class="bg-[#74ACD2]/10 border border-[#74ACD2]/30 rounded-3xl p-8 backdrop-blur-sm relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <h4 class="ceamse-header-font text-2xl text-white mb-4">Visión Sostenible "In Eternum"</h4>
+                        <p class="text-blue-100 text-sm leading-relaxed max-w-2xl">
+                            Transformación histórica de la matriz logística del AMBA. Pasamos de un modelo radial saturado a nodos periféricos de alta eficiencia, garantizando la justicia territorial y la preservación del activo vial bonaerense.
+                        </p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="bg-white/10 p-4 rounded-2xl border border-white/20 text-center min-w-[120px]">
+                            <p class="text-[10px] text-white/60 font-bold uppercase">Preservación</p>
+                            <p class="text-xl font-black text-[#74ACD2]">5.1M ESAL</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-2xl border border-white/20 text-center min-w-[120px]">
+                            <p class="text-[10px] text-white/60 font-bold uppercase">Emisiones</p>
+                            <p class="text-xl font-black text-[#74ACD2]">-15% CO2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: LOGISTICS -->
+        <section id="logistics" class="tab-content space-y-8">
+            <div class="card-white overflow-hidden">
+                <div class="p-8 bg-slate-50 border-b border-slate-100">
+                    <h4 class="ceamse-header-font text-xl text-[#1C3E5C]">Matriz de Eficiencia AMBA Sur</h4>
+                </div>
+                <div class="p-0 overflow-x-auto text-sm">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                                <th class="px-8 py-4">Origen / Segmento</th>
+                                <th class="px-8 py-4">Viajes Mens.</th>
+                                <th class="px-8 py-4 text-right">Factor Vial</th>
+                                <th class="px-8 py-4 text-right">Congestión</th>
+                                <th class="px-8 py-4 text-right">Ambiental</th>
+                                <th class="px-8 py-4 text-right bg-[#74ACD2]/10 text-[#1C3E5C]">Total Mensual</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-semibold text-slate-600 divide-y divide-slate-100">
+                            <tr>
+                                <td class="px-8 py-4 text-[#1C3E5C] font-bold">Lomas de Zamora</td>
+                                <td class="px-8 py-4">3.200</td>
+                                <td class="px-8 py-4 text-right">$12.096</td>
+                                <td class="px-8 py-4 text-right">$115.200</td>
+                                <td class="px-8 py-4 text-right">$3.283</td>
+                                <td class="px-8 py-4 text-right bg-[#74ACD2]/5 font-black text-[#1C3E5C]">$130.579</td>
+                            </tr>
+                            <tr>
+                                <td class="px-8 py-4 text-[#1C3E5C] font-bold">Lanús (Optimizado)</td>
+                                <td class="px-8 py-4">2.712</td>
+                                <td class="px-8 py-4 text-right">$7.120</td>
+                                <td class="px-8 py-4 text-right">$67.806</td>
+                                <td class="px-8 py-4 text-right">$1.932</td>
+                                <td class="px-8 py-4 text-right bg-[#74ACD2]/5 font-black text-[#1C3E5C]">$76.858</td>
+                            </tr>
+                            <tr>
+                                <td class="px-8 py-4 text-[#1C3E5C] font-bold">Avellaneda</td>
+                                <td class="px-8 py-4">2.292</td>
+                                <td class="px-8 py-4 text-right">$4.346</td>
+                                <td class="px-8 py-4 text-right">$41.392</td>
+                                <td class="px-8 py-4 text-right">$1.180</td>
+                                <td class="px-8 py-4 text-right bg-[#74ACD2]/5 font-black text-[#1C3E5C]">$46.918</td>
+                            </tr>
+                            <tr>
+                                <td class="px-8 py-4 text-[#1C3E5C] font-bold">Quilmes (Optimizado)</td>
+                                <td class="px-8 py-4">1.618</td>
+                                <td class="px-8 py-4 text-right">$3.430</td>
+                                <td class="px-8 py-4 text-right">$32.664</td>
+                                <td class="px-8 py-4 text-right">$931</td>
+                                <td class="px-8 py-4 text-right bg-[#74ACD2]/5 font-black text-[#1C3E5C]">$37.025</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="px-8 py-4 text-[#1C3E5C] font-black italic text-base">Destino Final (27T)</td>
+                                <td class="px-8 py-4">2.590</td>
+                                <td class="px-8 py-4 text-right">$14.743</td>
+                                <td class="px-8 py-4 text-right">$59.570</td>
+                                <td class="px-8 py-4 text-right">$2.383</td>
+                                <td class="px-8 py-4 text-right bg-[#74ACD2]/10 font-black text-[#1C3E5C]">$76.696</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card-white p-8">
+                    <h4 class="ceamse-header-font text-sm text-[#1C3E5C] mb-4">Factor ESAL de Daño Vial</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">
+                        Basado en la <strong>"Ley de la Cuarta Potencia"</strong>, el deterioro asfáltico es exponencial al peso por eje. 
+                        Adoptamos el criterio de Eje Simple (divisor 8,2) para máxima transparencia.
+                    </p>
+                    <div class="flex items-center justify-between bg-slate-50 p-6 rounded-2xl">
+                        <div class="text-center">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Auto Particular</p>
+                            <p class="text-xl font-black text-slate-400">0.0002 ESAL</p>
+                        </div>
+                        <div class="text-[#74ACD2] font-black text-xl">VS</div>
+                        <div class="text-center">
+                            <p class="text-[10px] font-bold text-red-400 uppercase">Camión de 27T</p>
+                            <p class="text-xl font-black text-red-600">4.95 ESAL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-white p-8 bg-slate-900 text-white border-none flex flex-col justify-center">
+                    <h4 class="ceamse-header-font text-sm text-[#74ACD2] mb-2 tracking-widest">Resultado de Eficiencia</h4>
+                    <p class="text-4xl font-black tracking-tighter italic">222.516 KM</p>
+                    <p class="text-xs text-slate-400 font-bold uppercase mt-2">Evitados mensualmente en red crítica</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: FCAM -->
+        <section id="fcam" class="tab-content space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="card-white p-8 space-y-4">
+                    <div class="w-16 h-16 bg-[#74ACD2]/10 rounded-3xl flex items-center justify-center mx-auto text-[#74ACD2]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h5 class="ceamse-header-font text-sm text-[#1C3E5C]">Innovación</h5>
+                    <p class="text-xs text-slate-500 leading-relaxed">De centros de disposición a Nodos de Bio-Energía y Economía Circular.</p>
+                </div>
+                <div class="card-white p-8 space-y-4">
+                    <div class="w-16 h-16 bg-[#74ACD2]/10 rounded-3xl flex items-center justify-center mx-auto text-[#74ACD2]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                    </div>
+                    <h5 class="ceamse-header-font text-sm text-[#1C3E5C]">Sostenibilidad</h5>
+                    <p class="text-xs text-slate-500 leading-relaxed">La Provincia como proveedor vital de saneamiento regional equilibrado.</p>
+                </div>
+                <div class="card-white p-8 space-y-4">
+                    <div class="w-16 h-16 bg-[#74ACD2]/10 rounded-3xl flex items-center justify-center mx-auto text-[#74ACD2]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    </div>
+                    <h5 class="ceamse-header-font text-sm text-[#1C3E5C]">Factor Humano</h5>
+                    <p class="text-xs text-slate-500 leading-relaxed">Infraestructura Social Verde y Salud Preventiva en municipios anfitriones.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card-white p-8 bg-[#1C3E5C] text-white border-none">
+                    <h4 class="ceamse-header-font text-lg text-[#74ACD2] mb-6 tracking-widest">Fórmula del Fondo (FCAM)</h4>
+                    <div class="bg-white/5 p-8 rounded-2xl font-mono text-xl text-center border border-white/10 mb-8">
+                        FCAM = Σ (C<sub>suelo</sub> + C<sub>rem</sub> + C<sub>salud</sub> + C<sub>clima</sub>) - T
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+                            <p class="text-[10px] font-bold text-[#74ACD2] uppercase mb-1">C_Suelo</p>
+                            <p class="text-[10px] text-slate-400">Valoración Territorial</p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+                            <p class="text-[10px] font-bold text-[#74ACD2] uppercase mb-1">C_Rem</p>
+                            <p class="text-[10px] text-slate-400">Post-Cierre 50 años</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-white p-8 flex flex-col justify-center">
+                    <h4 class="ceamse-header-font text-lg text-[#1C3E5C] mb-8 italic">Evolución del Paradigma</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center shrink-0">✕</div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-400 uppercase">Eliminar Concepto</p>
+                                <p class="text-sm font-bold text-slate-800">"Pago por Daño" o "Vuelco"</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">✓</div>
+                            <div>
+                                <p class="text-[10px] font-black text-slate-400 uppercase">Implementar Concepto</p>
+                                <p class="text-sm font-bold text-slate-800 italic">"Inversión por Servicio Ambiental Regional"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: UIP -->
+        <section id="uip" class="tab-content space-y-8">
+            <div class="card-white p-10 flex flex-col lg:flex-row items-center gap-12">
+                <div class="flex-1 space-y-6">
+                    <h3 class="ceamse-header-font text-3xl text-[#1C3E5C]">Unidad de Inspección Provincia (UIP)</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Exportación de la eficiencia operativa de CABA a Lomas de Zamora. La UIP centraliza la fiscalización técnica previa liberación de pagos municipales.
+                    </p>
+                    <div class="flex gap-12 pt-4">
+                        <div class="text-center">
+                            <p class="text-4xl font-black text-[#74ACD2]">65</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Agentes UIP</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-4xl font-black text-[#1C3E5C]">$636M</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Presup. Mensual</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 bg-slate-50 p-8 rounded-3xl">
+                    <canvas id="uipChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card-white p-8">
+                    <h5 class="ceamse-header-font text-sm text-[#1C3E5C] mb-4">Centralización Operativa 2026</h5>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                        Ante la retracción de ACUMAR, CEAMSE asume el rol de Autoridad Operativa y Fiscalizadora en:
+                    </p>
+                    <ul class="space-y-3 text-xs font-bold text-[#1C3E5C]">
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#74ACD2] rounded-full"></div> Saneamiento de Cuencas y Márgenes</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#74ACD2] rounded-full"></div> Servicio Unificado de Desobstructores</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-[#74ACD2] rounded-full"></div> Fiscalización de Empresas Recolectoras</li>
+                    </ul>
+                </div>
+                <div class="card-white p-8 bg-secondary-custom text-white border-none flex items-center gap-6">
+                    <div class="p-4 bg-white/10 rounded-2xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#74ACD2]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-[#74ACD2] uppercase">Economía de Escala</p>
+                        <h4 class="text-2xl font-black">20% Reducción</h4>
+                        <p class="text-xs text-slate-400">Costos operativos municipales por unificación.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Meta -->
+    <footer class="fixed bottom-0 right-0 p-6 z-40 text-[10px] font-bold text-white/30 uppercase tracking-[0.3em] pointer-events-none">
+        © 2026 CEAMSE - Gestión Tapia. Master Plan V2.0
+    </footer>
+
+    <script>
+        // Tab Engine
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.sidebar-link').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-slate-300');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.remove('text-slate-300');
+        }
+
+        // Charts Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            Chart.defaults.font.family = "'Open Sans', sans-serif";
+            Chart.defaults.color = "#94a3b8";
+
+            // Bar Chart Overview
+            new Chart(document.getElementById('barChartOverview'), {
+                type: 'bar',
+                data: {
+                    labels: ['Lomas', 'Lanús', 'Avellaneda', 'Quilmes', 'Destino F.'],
+                    datasets: [{
+                        label: 'Ahorro Mensual (USD)',
+                        data: [130579, 76858, 46918, 37025, 76696],
+                        backgroundColor: '#74ACD2',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Pie Chart Overview
+            new Chart(document.getElementById('pieChartOverview'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tiempo', 'Vial', 'Ambiental'],
+                    datasets: [{
+                        data: [3799584, 500820, 116508],
+                        backgroundColor: ['#1C3E5C', '#74ACD2', '#e2e8f0'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            // UIP Chart
+            new Chart(document.getElementById('uipChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Superficie (km²)', 'Agentes', 'M$ Mensual'],
+                    datasets: [
+                        { label: 'CABA (Base)', data: [182, 133, 1300], backgroundColor: '#e2e8f0', borderRadius: 4 },
+                        { label: 'Lomas (UIP)', data: [89, 65, 636], backgroundColor: '#74ACD2', borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { 
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
