@@ -96,7 +96,7 @@
                 <img src="logoC.png" alt="CEAMSE" class="h-16 mb-10 drop-shadow-md hover:scale-105 transition">
             </a>
             
-            <div class="space-y-8">
+            <div class="space-y-6">
                 <div onclick="showTab('step1')" id="ind-step1" class="step-indicator active">
                     <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Paso 01</p>
                     <h4 class="font-black text-xs uppercase text-white">Visión Estratégica</h4>
@@ -107,17 +107,21 @@
                 </div>
                 <div onclick="showTab('step3')" id="ind-step3" class="step-indicator">
                     <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Paso 03</p>
-                    <h4 class="font-black text-xs uppercase text-white">Inspección & Saneamiento</h4>
+                    <h4 class="font-black text-xs uppercase text-white">Unidad de Inspección</h4>
                 </div>
                 <div onclick="showTab('step4')" id="ind-step4" class="step-indicator">
                     <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Paso 04</p>
-                    <h4 class="font-black text-xs uppercase text-white">Fondo de Convergencia</h4>
+                    <h4 class="font-black text-xs uppercase text-white">Unidad de Saneamiento</h4>
                 </div>
                 <div onclick="showTab('step5')" id="ind-step5" class="step-indicator">
                     <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Paso 05</p>
-                    <h4 class="font-black text-xs uppercase text-white">Regeneración Urbana</h4>
+                    <h4 class="font-black text-xs uppercase text-white">Fondo de Convergencia</h4>
                 </div>
                 <div onclick="showTab('step6')" id="ind-step6" class="step-indicator">
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Paso 06</p>
+                    <h4 class="font-black text-xs uppercase text-white">Regeneración Urbana</h4>
+                </div>
+                <div onclick="showTab('step7')" id="ind-step7" class="step-indicator">
                     <p class="text-[9px] font-bold text-[#74ACD2] uppercase tracking-widest">Hito Final</p>
                     <h4 class="font-black text-xs uppercase text-[#74ACD2]">Resumen & Paradigma</h4>
                 </div>
@@ -147,7 +151,6 @@
 
             <!-- Paso 01: VISIÓN ESTRATÉGICA -->
             <section id="step1" class="tab-content active space-y-8">
-                <!-- KPIs de Impacto Inicial -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="card-white p-6 border-l-4 border-[#74ACD2]">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Ahorro Anual Consolidado</p>
@@ -162,11 +165,11 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-6">
-                        <div class="card-white p-8">
+                    <div class="space-y-6 text-slate-300">
+                        <div class="card-white p-8 border-l-8 border-[#74ACD2]">
                             <h3 class="font-black text-lg text-[#1C3E5C] mb-4 uppercase italic">Descentralización Logística</h3>
                             <p class="text-sm text-slate-600 leading-relaxed text-justify mb-4">
-                                Apertura del <strong>Complejo Ambiental San Vicente</strong>: La piedra angular para prohibir el ingreso de camiones de Provincia a CABA. Absorción del 35% de la masa crítica de residuos.
+                                Apertura del <strong>Complejo Ambiental San Vicente</strong>: La piedra angular para prohibir el ingreso de camiones de Provincia a CABA. Absorción del 35% de la masa crítica de residuos y equilibrio de cargas regionales.
                             </p>
                             <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 italic text-xs text-slate-600">
                                 "San Vicente actúa como el sucesor natural del modelo radial, aliviando la presión operativa sobre el Complejo Norte."
@@ -183,7 +186,6 @@
             <!-- Paso 02: LOGÍSTICA AMBA SUR -->
             <section id="step2" class="tab-content space-y-8">
                 
-                <!-- Sostenibilidad del Modelo -->
                 <div class="card-white p-8 paradigm-card">
                     <h3 class="font-black text-lg text-[#1C3E5C] mb-4 uppercase italic text-center">Sostenibilidad del Modelo AMBA Sur</h3>
                     <p class="text-sm text-slate-600 leading-relaxed mb-6 text-justify">
@@ -219,7 +221,6 @@
                     </div>
                 </div>
 
-                <!-- Matriz de Eficiencia AMBA Sur -->
                 <div class="card-white overflow-hidden">
                     <div class="p-8 bg-slate-50 border-b border-slate-100">
                         <h4 class="ceamse-black text-sm text-[#1C3E5C]">Matriz de Eficiencia AMBA Sur</h4>
@@ -229,7 +230,7 @@
                             <thead>
                                 <tr class="bg-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest">
                                     <th class="px-8 py-4">Origen / Segmento</th>
-                                    <th class="px-8 py-4">Viajes Mens.</th>
+                                    <th class="px-8 py-4 text-center">Viajes Mens.</th>
                                     <th class="px-8 py-4 text-right">Factor Vial</th>
                                     <th class="px-8 py-4 text-right">Congestión</th>
                                     <th class="px-8 py-4 text-right">Ambiental</th>
@@ -239,7 +240,7 @@
                             <tbody class="font-semibold text-slate-600 divide-y divide-slate-100">
                                 <tr>
                                     <td class="px-8 py-4 text-[#1C3E5C] font-bold">Lomas de Zamora</td>
-                                    <td class="px-8 py-4">3.200</td>
+                                    <td class="px-8 py-4 text-center">3.200</td>
                                     <td class="px-8 py-4 text-right">$12.096</td>
                                     <td class="px-8 py-4 text-right">$115.200</td>
                                     <td class="px-8 py-4 text-right">$3.283</td>
@@ -247,7 +248,7 @@
                                 </tr>
                                 <tr>
                                     <td class="px-8 py-4 text-[#1C3E5C] font-bold">Lanús</td>
-                                    <td class="px-8 py-4">2.712</td>
+                                    <td class="px-8 py-4 text-center">2.712</td>
                                     <td class="px-8 py-4 text-right">$7.120</td>
                                     <td class="px-8 py-4 text-right">$67.806</td>
                                     <td class="px-8 py-4 text-right">$1.932</td>
@@ -255,7 +256,7 @@
                                 </tr>
                                 <tr>
                                     <td class="px-8 py-4 text-[#1C3E5C] font-bold">Avellaneda</td>
-                                    <td class="px-8 py-4">2.292</td>
+                                    <td class="px-8 py-4 text-center">2.292</td>
                                     <td class="px-8 py-4 text-right">$4.346</td>
                                     <td class="px-8 py-4 text-right">$41.392</td>
                                     <td class="px-8 py-4 text-right">$1.180</td>
@@ -263,15 +264,15 @@
                                 </tr>
                                 <tr>
                                     <td class="px-8 py-4 text-[#1C3E5C] font-bold">Quilmes</td>
-                                    <td class="px-8 py-4">1.618</td>
+                                    <td class="px-8 py-4 text-center">1.618</td>
                                     <td class="px-8 py-4 text-right">$3.430</td>
                                     <td class="px-8 py-4 text-right">$32.664</td>
                                     <td class="px-8 py-4 text-right">$931</td>
                                     <td class="px-8 py-4 text-right bg-[#74ACD2]/5 font-black text-[#1C3E5C]">$37.025</td>
                                 </tr>
                                 <tr class="bg-blue-50/30">
-                                    <td class="px-8 py-4 text-[#1C3E5C] font-black italic">Destino Final (27T)</td>
-                                    <td class="px-8 py-4">2.590</td>
+                                    <td class="px-8 py-4 text-[#1C3E5C] font-black italic">Transferencia Destino Final</td>
+                                    <td class="px-8 py-4 text-center">2.590</td>
                                     <td class="px-8 py-4 text-right">$14.743</td>
                                     <td class="px-8 py-4 text-right">$59.570</td>
                                     <td class="px-8 py-4 text-right">$2.383</td>
@@ -283,13 +284,13 @@
                 </div>
             </section>
 
-            <!-- Paso 03: INSPECCIÓN & SANEAMIENTO -->
+            <!-- Paso 03: UNIDAD DE INSPECCIÓN -->
             <section id="step3" class="tab-content space-y-8">
                 <div class="card-white p-10 flex flex-col lg:flex-row gap-12 items-center">
                     <div class="flex-1 space-y-6 text-sm">
-                        <h3 class="ceamse-black text-2xl text-[#1C3E5C]">Unidad UIP: El Gold Standard</h3>
+                        <h3 class="ceamse-black text-2xl text-[#1C3E5C]">Unidad de Inspección Provincia (UIP)</h3>
                         <p class="text-slate-500 leading-relaxed text-justify">
-                            Ante la retracción de ACUMAR, CEAMSE asume el rol de Autoridad Operativa y Fiscalizadora. Un cuerpo de Inspección de élite, garantizando justicia operativa en el territorio que soporta la carga logística. Este despliegue elimina "zonas ciegas" y asegura que la fiscalización de las empresas recolectoras cumpla con estándares internacionales.
+                            Se crea la <strong>Unidad de Inspección Provincia</strong>, con facultades adaptadas a la complejidad del conurbano. Su sede operativa se establece en la Estación de Transferencia Lomas de Zamora, actuando como pulmón logístico que conecta la generación local con el destino final en San Vicente. Este cuerpo de inspección elimina "zonas ciegas" y asegura que la fiscalización de las empresas recolectoras cumpla con estándares de auditoría internacional.
                         </p>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
@@ -297,24 +298,67 @@
                                 <p class="text-2xl font-black text-[#1C3E5C]">65 Agentes</p>
                             </div>
                             <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                                <p class="text-[10px] font-black text-[#74ACD2] uppercase">Costos Municipales</p>
-                                <p class="text-2xl font-black text-[#1C3E5C]">-20%</p>
+                                <p class="text-[10px] font-black text-[#74ACD2] uppercase">Ratio de Cobertura</p>
+                                <p class="text-2xl font-black text-[#1C3E5C]">1 / 1.36 km²</p>
                             </div>
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/3 bg-[#1C3E5C] p-8 rounded-3xl text-white shadow-inner">
-                        <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-4 tracking-widest text-center">Saneamiento Hídrico 2026</h5>
-                        <ul class="space-y-4 text-xs font-bold opacity-90">
-                            <li class="flex items-start gap-3"><div class="w-2 h-2 bg-[#74ACD2] rounded-full mt-1"></div> Limpieza de márgenes, ríos y arroyos.</li>
-                            <li class="flex items-start gap-3"><div class="w-2 h-2 bg-[#74ACD2] rounded-full mt-1"></div> Servicio Unificado de Desobstructores.</li>
-                            <li class="flex items-start gap-3"><div class="w-2 h-2 bg-[#74ACD2] rounded-full mt-1"></div> Fiscalización técnica de recolectoras.</li>
+                    <div class="w-full lg:w-1/3 bg-[#1C3E5C] p-8 rounded-3xl text-white text-center">
+                        <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-4 tracking-widest">Facultades UIP</h5>
+                        <ul class="space-y-4 text-xs font-bold opacity-90 text-left">
+                            <li class="flex items-start gap-3"><div class="w-2 h-2 bg-[#74ACD2] rounded-full mt-1"></div> Auditoría de rutas y frecuencias.</li>
+                            <li class="flex items-start gap-3"><div class="w-2 h-2 bg-[#74ACD2] rounded-full mt-1"></div> Inspección técnica de flotas pesadas.</li>
+                            <li class="flex items-start gap-3"><div class="w-2 h-2 bg-[#74ACD2] rounded-full mt-1"></div> Control de descarga en Transferencia.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- Paso 04: FONDO DE CONVERGENCIA -->
+            <!-- Paso 04: UNIDAD DE SANEAMIENTO -->
             <section id="step4" class="tab-content space-y-8">
+                <div class="card-white p-10 paradigm-card">
+                    <h3 class="font-black text-lg text-[#1C3E5C] mb-4 uppercase italic">Unificación de Servicios Especiales</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-8 text-justify">
+                        Se establece el <span class="highlight-blue">Programa de Saneamiento Hídrico Municipal</span>, donde la CEAMSE centraliza la contratación y prestación de servicios sanitarios críticos: <span class="highlight-blue">Desobstructores y Atmosféricos</span>.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-2">Economía de Escala</h5>
+                            <p class="text-[11px] text-slate-500">Centralización que reduce costos para municipios y garantiza el mantenimiento preventivo de conductos pluviales.</p>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-2">Barrios Populares</h5>
+                            <p class="text-[11px] text-slate-500">Atención prioritaria en áreas sin red cloacal, con vertidos en plantas de tratamiento autorizadas.</p>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-2">Profesionalización</h5>
+                            <p class="text-[11px] text-slate-500">Flota y personal auditados bajo protocolos de seguridad e higiene por la UIP.</p>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-2">Eficiencia Económica</h5>
+                            <p class="text-[11px] text-slate-500 font-bold text-[#1C3E5C]">Reducción estimada del 20% en costos de contratación municipal.</p>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-2">Impacto Ambiental</h5>
+                            <p class="text-[11px] text-slate-500">Eliminación de puntos críticos de contaminación en cuencas hídricas regionales.</p>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                            <h5 class="text-[10px] font-black text-[#74ACD2] uppercase mb-2">Transparencia</h5>
+                            <p class="text-[11px] text-slate-500">Estandarización de inspecciones eliminando la disparidad de criterios entre municipios.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 bg-[#1C3E5C] text-white p-6 rounded-2xl border-l-8 border-[#74ACD2]">
+                        <p class="text-sm italic leading-relaxed text-justify text-white/90">
+                            "Este proyecto posiciona a la CEAMSE 2026 como el brazo ejecutor del Ministerio de Ambiente, garantizando que el saneamiento abandonado por otros entes (como el ACUMAR) sea retomado con capacidad técnica, control y visión de futuro."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Paso 05: FONDO DE CONVERGENCIA -->
+            <section id="step5" class="tab-content space-y-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="card-white p-10 bg-slate-900 text-white border-none flex flex-col justify-center text-center">
                         <h4 class="ceamse-black text-xl text-[#74ACD2] mb-6 tracking-widest">Fórmula del FCAM</h4>
@@ -328,30 +372,26 @@
                         <p class="text-sm text-slate-600 leading-relaxed mb-4 text-justify">
                             La implementación del FCAM asegura una paz social y técnica permanente. Al desvincular el cobro de la "cantidad de basura" y vincularlo a la "calidad de la inversión regional", el proyecto se vuelve políticamente inatacable y socialmente deseado.
                         </p>
-                        <div class="space-y-3">
-                            <p class="text-xs text-slate-500 font-bold uppercase border-l-2 border-[#74ACD2] pl-3">CABA: Sostenibilidad internacional mediante inversión en entorno inmediato.</p>
-                            <p class="text-xs text-slate-500 font-bold uppercase border-l-2 border-[#74ACD2] pl-3">PBA: Capitalización territorial, transformando un desafío logístico en una oportunidad de desarrollo industrial y social sin precedentes..</p>
+                        <div class="space-y-3 text-xs text-slate-500">
+                            <p class="font-bold border-l-2 border-[#74ACD2] pl-3 uppercase">CABA: Sostenibilidad mediante inversión en entorno inmediato.</p>
+                            <p class="font-bold border-l-2 border-[#74ACD2] pl-3 uppercase">PROVINCIA: Capitalización territorial e innovación industrial.</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Desglose de la Fórmula -->
-                <div class="card-white p-10">
-                    <h4 class="ceamse-black text-sm text-[#1C3E5C] mb-6 uppercase font-bold tracking-wider">Composición Técnica de la Fórmula</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-xs text-slate-500">
-                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_s:</span> Costo de suelo y depreciación por precios hedónicos.</div>
-                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_r:</span> Costos de remediación y mantenimiento post-cierre (50 años).</div>
-                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_h:</span> Externalidad sanitaria monetizada en capital humano (DALY).</div>
-                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_c:</span> Impacto climático según el Precio Social del Carbono.</div>
-                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">T:</span> Tasas y cánones transferidos para evitar doble imposición.</div>
+                <div class="card-white p-8">
+                    <h4 class="ceamse-black text-sm text-[#1C3E5C] mb-6 uppercase font-bold text-center">Composición Técnica</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-[11px] text-slate-500">
+                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_s:</span> Renta de suelo y depreciación hedónica.</div>
+                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_r:</span> Post-cierre por 50 años.</div>
+                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_h:</span> Externalidad sanitaria (DALY).</div>
+                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">C_c:</span> Precio Social del Carbono.</div>
+                        <div class="p-4 bg-slate-50 rounded-xl"><span class="font-bold text-[#74ACD2]">T:</span> Tasas y cánones ya transferidos.</div>
                     </div>
                 </div>
             </section>
 
-            <!-- Paso 05: REGENERACIÓN URBANA -->
-            <section id="step5" class="tab-content space-y-8">
-                
-                <!-- Valor Estratégico de la Reconversión -->
+            <!-- Paso 06: REGENERACIÓN URBANA -->
+            <section id="step6" class="tab-content space-y-8">
                 <div class="card-white p-10 paradigm-card">
                     <h3 class="font-black text-lg text-[#1C3E5C] mb-4 uppercase italic">Valor Estratégico Colegiales</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-600 leading-relaxed">
@@ -376,57 +416,34 @@
                 </div>
             </section>
 
-            <!-- Paso 06: RESUMEN & CAMBIO DE PARADIGMA -->
-            <section id="step6" class="tab-content space-y-10">
-                
-                <!-- Hero Cambio de Paradigma -->
+            <!-- Paso 07: RESUMEN & CAMBIO DE PARADIGMA -->
+            <section id="step7" class="tab-content space-y-10">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="lg:col-span-2 space-y-6">
-                        <h3 class="ceamse-black text-3xl text-white leading-tight">
-                            REVOLUCIÓN INDUSTRIAL VERDE:<br>
-                            <span class="text-[#74ACD2]">EL NUEVO PARADIGMA TAPIA</span>
-                        </h3>
+                        <h3 class="ceamse-black text-3xl text-white leading-tight">REVOLUCIÓN INDUSTRIAL VERDE</h3>
                         <p class="text-lg text-slate-300 font-light leading-relaxed text-justify">
-                            Bajo la Gestión Tapia, redefinimos el ADN institucional. Ya no somos un enterrador de desechos; somos el motor de una <strong>Revolución Logística y Energética</strong>. La Provincia deja de recibir "basura" para convertirse en el custodio de <strong>Materia Prima Estratégica</strong>.
+                            Bajo la Gestión Tapia, la Provincia deja de recibir "basura" para convertirse en el custodio de <strong>Materia Prima Estratégica</strong>. Transformamos Complejos Ambientales en <strong>Nodos de Innovación Industrial</strong>.
                         </p>
                     </div>
                     <div class="bg-[#74ACD2]/20 rounded-3xl p-8 border border-[#74ACD2]/40 flex flex-col items-center justify-center text-center">
-                        <p class="text-xs font-black uppercase text-[#74ACD2] mb-2 tracking-widest">Ahorro Sistémico Consolidado</p>
+                        <p class="text-xs font-black uppercase text-[#74ACD2] mb-2 tracking-widest text-white">Ahorro Sistémico</p>
                         <p class="text-4xl font-black italic text-white">USD 5.7M</p>
                         <p class="text-[10px] font-bold opacity-60 mt-2 uppercase text-white">Anualidad Perpetua</p>
                     </div>
                 </div>
 
-                <!-- Los 3 Pilares -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="card-white p-8 paradigm-card">
-                        <div class="w-12 h-12 bg-[#1C3E5C] text-[#74ACD2] rounded-xl flex items-center justify-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        </div>
-                        <h4 class="font-black text-sm text-[#1C3E5C] uppercase mb-4 tracking-tighter leading-none">Liderazgo Tecnológico:<br><span class="text-[#74ACD2]">De la Disposición a la Economía Circular</span></h4>
-                        <p class="text-xs text-slate-500 leading-relaxed text-justify">
-                            La Gestión Tapia permite transformar nuestros Complejos Ambientales en <strong>Nodos de Innovación Industrial</strong>. Evolución tecnológica definitiva: materia prima estratégica para bioenergía y materiales recuperados.
-                        </p>
+                        <h4 class="font-black text-xs text-[#1C3E5C] uppercase mb-4">Liderazgo Tecnológico</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed text-justify">Materia prima estratégica para la generación de bioenergía y materiales recuperados de alta pureza.</p>
                     </div>
-
                     <div class="card-white p-8 paradigm-card">
-                        <div class="w-12 h-12 bg-[#1C3E5C] text-[#74ACD2] rounded-xl flex items-center justify-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-                        </div>
-                        <h4 class="font-black text-sm text-[#1C3E5C] uppercase mb-4 tracking-tighter leading-none">Contribución Territorial:<br><span class="text-[#74ACD2]">La Provincia como Proveedor de Vida</span></h4>
-                        <p class="text-xs text-slate-500 leading-relaxed text-justify">
-                            Reconocimiento del **Servicio Ambiental Vital**. La Ciudad invierte en el FCAM como un acto de solidaridad territorial para preservar los activos naturales y la resiliencia bonaerense.
-                        </p>
+                        <h4 class="font-black text-xs text-[#1C3E5C] uppercase mb-4">Contribución Territorial</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed text-justify">Provincia como Proveedor de Vida. La Ciudad invierte en el FCAM como acto de solidaridad territorial.</p>
                     </div>
-
                     <div class="card-white p-8 paradigm-card">
-                        <div class="w-12 h-12 bg-[#1C3E5C] text-[#74ACD2] rounded-xl flex items-center justify-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        </div>
-                        <h4 class="font-black text-sm text-[#1C3E5C] uppercase mb-4 tracking-tighter leading-none">El Factor Humano:<br><span class="text-[#74ACD2]">Inversión en Infraestructura Social Verde</span></h4>
-                        <p class="text-xs text-slate-500 leading-relaxed text-justify">
-                            El beneficio económico se traduce en **Bienestar Comunitario**: centros de salud preventiva, parques inteligentes y educación ambiental en municipios anfitriones de los nodos.
-                        </p>
+                        <h4 class="font-black text-xs text-[#1C3E5C] uppercase mb-4">Factor Humano</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed text-justify">Bienestar Comunitario: centros de salud preventiva e infraestructura social verde en municipios anfitriones.</p>
                     </div>
                 </div>
             </section>
@@ -455,10 +472,11 @@
             const titles = {
                 step1: 'Visión Estratégica',
                 step2: 'Logística AMBA Sur',
-                step3: 'Inspección & Saneamiento',
-                step4: 'Fondo de Convergencia',
-                step5: 'Regeneración Urbana',
-                step6: 'Resumen & Paradigma'
+                step3: 'Unidad de Inspección',
+                step4: 'Unidad de Saneamiento',
+                step5: 'Fondo de Convergencia',
+                step6: 'Regeneración Urbana',
+                step7: 'Resumen & Paradigma'
             };
             document.getElementById('main-title').innerText = titles[tabId];
         }
@@ -467,7 +485,6 @@
             Chart.defaults.font.family = "'Open Sans', sans-serif";
             Chart.defaults.color = "#94a3b8";
 
-            // Gráfico de Beneficios
             new Chart(document.getElementById('pieChartBenefits'), {
                 type: 'doughnut',
                 data: {
@@ -486,7 +503,6 @@
                 }
             });
 
-            // Gráfico de Logística
             new Chart(document.getElementById('chartLogistics'), {
                 type: 'bar',
                 data: {
